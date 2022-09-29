@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.IllegalFormatCodePointException;
+import java.util.Set;
+
 public class PalabraActivity extends AppCompatActivity {
 
     private EditText txtResultado;
@@ -22,9 +25,16 @@ public class PalabraActivity extends AppCompatActivity {
 
 
         if (bundle != null){
-            String frase = (String) bundle.getString("FRASE");
-            String[] palabras = frase.split(" ");
-            txtResultado.setText("NÚMERO PALABRAS: "+palabras.length);
+            if (bundle.containsKey("PALABRAS")){
+                String frase = bundle.getString("PALABRAS");
+                String[] palabras = frase.split(" ");
+                txtResultado.setText("NÚMERO PALABRAS: "+palabras.length);
+
+            }
+            if (bundle.containsKey("CARACTERES")){
+                String frase = bundle.getString("CARACTERES");
+                txtResultado.setText("NÚMERO CARACTERES: "+frase.length());
+            }
 
         }
     }

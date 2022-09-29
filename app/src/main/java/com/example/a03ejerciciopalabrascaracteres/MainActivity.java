@@ -31,7 +31,19 @@ public class MainActivity extends AppCompatActivity {
                 String frase = txtFrase.getText().toString();
                 Intent intent = new Intent(MainActivity.this, PalabraActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("FRASE", frase);
+                bundle.putString("PALABRAS", frase);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+        btnCaracteres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String frase = txtFrase.getText().toString();
+                Intent intent = new Intent(MainActivity.this, PalabraActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("CARACTERES", frase);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
